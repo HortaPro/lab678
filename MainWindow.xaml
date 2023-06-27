@@ -1,0 +1,146 @@
+﻿<Window x:Class="lab6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="500" MinWidth="430" MinHeight="200" Background="White"
+        FontFamily="#Peugeot New Cyrillic">
+    <TabControl Background="White">
+        <TabItem Header="Динамические массивы">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MinWidth="120" />
+                    <ColumnDefinition Width="*" MinWidth="120" />
+                    <ColumnDefinition Width="2*" MinWidth="170" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25px" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Margin="0 5px">Записанные числа</TextBlock>
+                    <ListBox Grid.Row="1" Name="OutputArrayList"></ListBox>
+                </Grid>
+                <StackPanel Grid.Column="2" Grid.Row="0">
+                    <GroupBox>
+                        <StackPanel>
+                            <Label>Введите 12 вещественных чисел</Label>
+                            <TextBox
+                                Name="TextBoxInput"
+                                GotFocus="NumberInputGotFocus"
+                                BorderBrush="Silver"
+                                Height="30px"
+                                Margin="0 0 0 10px"
+                                PreviewKeyDown="TextBox_PreviewKeyDown"
+                                TextWrapping="Wrap" />
+                            <TextBlock Name="ErrorOut"
+                                       Visibility="Hidden"
+                                       TextAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontWeight="Bold"
+                                       Foreground="DarkRed"
+                                       TextWrapping="Wrap" />
+                            <Button
+                                Click="PushToArray"
+                                Height="30"
+                                Name="AddButton"
+                                ToolTipService.ShowOnDisabled="True">
+                                <TextBlock>Добавить</TextBlock>
+                            </Button>
+                        </StackPanel>
+                    </GroupBox>
+                    <Grid VerticalAlignment="Bottom">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <GroupBox Grid.Row="0">
+                            <StackPanel>
+                                <Button Click="FillArray"
+                                        Height="35"
+                                        Margin="0 0 0 5"
+                                        Name="FillArrayButton"
+                                        ToolTipService.ShowOnDisabled="True">
+                                    <TextBlock>Заполнить массив</TextBlock>
+                                </Button>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <TextBlock
+                            Name="Count"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            TextWrapping="WrapWithOverflow"
+                            Padding="10px 5px"
+                            Grid.Row="1">
+                        </TextBlock>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Стеки и очереди">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MinWidth="240" />
+                    <ColumnDefinition Width="*" MinWidth="170" />
+                </Grid.ColumnDefinitions>
+                <ListBox Name="OutputStack">
+                </ListBox>
+                <StackPanel Grid.Column="1" Grid.RowSpan="2">
+                    <Label>Введите вещественное число</Label>
+                    <TextBox Height="30" Name="TextBoxStackInput" VerticalContentAlignment="Center" Margin="0 0 0 10px" />
+                    <StackPanel>
+
+                        <Button
+                            Click="PushToStack"
+                            Height="30"
+                            Margin="0 0 0 5px">
+                            <TextBlock>
+                                Enqueue
+                            </TextBlock>
+                        </Button>
+
+                        <Button
+                            Click="PopToStack"
+                            Height="30">
+                            <TextBlock>
+                                Dequeue
+                            </TextBlock>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Списки">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MinWidth="240" />
+                    <ColumnDefinition Width="*" MinWidth="170" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+                <ListBox Name="OutputList">
+                </ListBox>
+                <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
+                    <Label>Введите вещественное число</Label>
+                    <TextBox Name="TextBoxListInput" 
+                             Height="30" 
+                             VerticalContentAlignment="Center" 
+                             Margin="0 0 0 10px" />
+                    <Button Click="InsertToList" Height="30" Margin="0 0 0 10px">Добавить число</Button>
+                    <TextBlock Name="ListSum" VerticalAlignment="Center"></TextBlock>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>
